@@ -28,7 +28,11 @@ const Login = () => {
     const handleSubmit = async (e) => {
             e.preventDefault();
             try {
-                await axios.post(url, formData).then((res) => {
+                await axios.post(url, formData,{
+                    headers: {
+                        "Accept-Language": "en-US,en;q=0.8",
+                    }
+                }).then((res) => {
                     saveLocalStorageToJwt(res.data);
                 }).then(()=>{
                     navigate('/')

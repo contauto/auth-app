@@ -14,10 +14,18 @@ function SignUp() {
     const [formData, setFormData] = useState({
         name: '',
         username: '',
+        mail: '',
         password: '',
         roles: ["ROLE_USER"],
     });
 
+    const [validationErrors, setValidationErrors] = useState({
+        name: '',
+        username: '',
+        mail: '',
+        password: '',
+    });
+    console.log(validationErrors);
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -28,13 +36,17 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(url, formData).then(() => {
+            await axios.post(url, formData,{
+                headers: {
+                    "Accept-Language": "en-US,en;q=0.8",
+                }
+            }).then(() => {
                 navigate('/login');
             })
             ;
         } catch
             (error) {
-            console.error('Error submitting form:', error);
+            setValidationErrors(error.response.data);
         }
     }
 
@@ -42,9 +54,10 @@ function SignUp() {
         <Div>
             <form className="bg-white p-8 rounded shadow-md w-96" onSubmit={handleSubmit}>
                 <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
-                <Input name="name" value={formData.name} handleChange={handleChange}/>
-                <Input name="username" value={formData.username} handleChange={handleChange}/>
-                <Input name="password" value={formData.password} handleChange={handleChange}/>
+                <Input name="name" validation={validationErrors.name} value={formData.name} handleChange={handleChange}/>
+                <Input name="username" validation={validationErrors.username} value={formData.username} handleChange={handleChange}/>
+                <Input name="mail" validation={validationErrors.mail} value={formData.mail} handleChange={handleChange}/>
+                <Input name="password" validation={validationErrors.password} value={formData.password} handleChange={handleChange}/>
                 <Button name="Sign Up"/>
             </form>
         </Div>
