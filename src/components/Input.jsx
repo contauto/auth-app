@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Input({name, value,handleChange, validation,type}) {
+function Input({name, value, handleChange, validation, type}) {
     return (
         <div className="mb-4">
             <label htmlFor={name} className={"block text-sm font-medium text-gray-600"}>
