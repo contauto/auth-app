@@ -57,7 +57,7 @@ function SignUp() {
                 <Input name="name" validation={validationErrors.name} value={formData.name} handleChange={handleChange}/>
                 <Input name="username" validation={validationErrors.username} value={formData.username} handleChange={handleChange}/>
                 <Input name="mail" validation={validationErrors.mail} value={formData.mail} handleChange={handleChange}/>
-                <Input name="password" validation={validationErrors.password} value={formData.password} handleChange={handleChange}/>
+                <Input type="password" name="password" validation={validationErrors.password} value={formData.password} handleChange={handleChange}/>
                 <Button name="Sign Up"/>
             </form>
         </Div>

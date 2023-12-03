@@ -50,7 +50,7 @@ const Login = () => {
             <form className="bg-white p-8 rounded shadow-md w-96" onSubmit={handleSubmit}>
                 <h2 className="text-2xl font-semibold mb-4">Login</h2>
                 <Input name="username" value={formData.username} handleChange={handleChange}/>
-                <Input name="password" value={formData.password} handleChange={handleChange}/>
+                <Input type="password" name="password" value={formData.password} handleChange={handleChange}/>
                 <Button name="login"/>
             </form>
         </Div>

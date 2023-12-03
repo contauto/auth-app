@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Input({name, value,handleChange, validation}) {
+function Input({name, value,handleChange, validation,type}) {
     return (
         <div className="mb-4">
             <label htmlFor={name} className={"block text-sm font-medium text-gray-600"}>
                 {name.toUpperCase()}
             </label>
             <input
-                type="text"
+                type={type}
                 id={name}
                 name={name}
                 value={value}
